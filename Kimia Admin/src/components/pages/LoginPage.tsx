@@ -25,7 +25,7 @@ export function LoginPage({ onLogin, onSwitchToRegister }: LoginPageProps) {
     // console.log(result);
 
     if (result) {
-      
+      // Simulate login
       onLogin();
     }
   };

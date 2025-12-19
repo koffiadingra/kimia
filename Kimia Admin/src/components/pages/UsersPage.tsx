@@ -105,7 +105,7 @@ export function UsersPage() {
   useEffect(() => {
     async function allUsers() {
       const test = await authService.getAllUsers();
-      // console.log(test);
+      console.log(test);
 
       setUsers(test);
     }
