@@ -18,8 +18,8 @@ interface Meditation {
   title: string;
   duration: number;
   category: string;
-  bucket_audio_id: string; // ID du fichier dans Storage
-  audio_id: string; // ID du fichier dans Storage
+  bucket_audio_id: string; 
+  audio_id: string; 
   language: string;
   instructorType: string;
   description: string;
@@ -55,7 +55,7 @@ export function MeditationPage() {
     setLoading(true);
     try {
       const response = await meditationService.getMeditations();
-      console.log(response);
+      // console.log(response);
 
       // Les méditations contiennent maintenant audioDownloadUrl
       setMeditations(response.documents as Meditation[]);
@@ -67,10 +67,10 @@ export function MeditationPage() {
   };
 
   const getAudioUrl = async (bkuId: string, audId: string) => {
-    console.log(bkuId, audId);
+    // console.log(bkuId, audId);
 
     const url = await meditationService.getFile(bkuId, audId);
-    console.log(url);
+    // console.log(url);
     setAudioDownloadUrl(url);
   };
 
@@ -112,12 +112,12 @@ export function MeditationPage() {
 
   const handleAddMeditation = async () => {
     try {
-      // Uploader le nouveau fichier audio si fourni
+      
       if (audioFile) {
         const audioFileId = await uploadAudioFile(audioFile);
 
         if (audioFileId) {
-          // Créer la méditation avec l'ID du fichier audio
+          
           const data_meditation = {
             title: tit,
             duration: parseInt(dur),
@@ -129,7 +129,7 @@ export function MeditationPage() {
             audio_id: audioFileId.id,
           };
 
-          console.log(data_meditation);
+          // console.log(data_meditation);
 
           const ajout = await meditationService.createMeditation(
             data_meditation
@@ -139,7 +139,7 @@ export function MeditationPage() {
 
       resetForm();
       setIsAddModalOpen(false);
-      await fetchMeditations(); // Recharger la liste
+      await fetchMeditations(); 
     } catch (error) {
       console.error("Add failed:", error);
       console.log("Échec de l'ajout");
@@ -149,7 +149,7 @@ export function MeditationPage() {
   const handleEditMeditation = async () => {
     if (!selectedMeditation) return;
     try {
-      // Uploader le nouveau fichier si fourni
+      
       if (audioFile) {
         const audioFileId = await uploadAudioFile(audioFile);
         if (!audioFileId) return;

@@ -36,7 +36,7 @@ export function RegisterPage({
       name: name,
     });
     if (result) {
-      // Simulate registration
+      
       onRegister();
     }
     //console.log(result);

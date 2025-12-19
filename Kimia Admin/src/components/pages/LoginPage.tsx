@@ -22,10 +22,10 @@ export function LoginPage({ onLogin, onSwitchToRegister }: LoginPageProps) {
       email: email,
       password: password,
     });
-    console.log(result);
+    // console.log(result);
 
     if (result) {
-      // Simulate login
+      
       onLogin();
     }
   };
